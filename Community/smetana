@@ -1,0 +1,12 @@
+import unittest
+from smetana.interface import main
+import pandas as pd
+
+class TestDetailed(unittest.TestCase):
+    def test_detailed(self):
+        acaldus = "C:/Users/Utilizador/Documents/Mestrado/Pycharm/community/Acaldus_smetana.xml"
+        aferrooxidans = "C:/Users/Utilizador/Documents/Mestrado/Pycharm/community/Aferrooxidans_smetana.xml"
+        main([acaldus,aferrooxidans], mode="detailed", output="C:/Users/Utilizador/Documents/Mestrado/Pycharm/community/test")
+        df = pd.read_csv("C:/Users/Utilizador/Documents/Mestrado/Pycharm/community/test_detailed.tsv")
+        self.assertGreater(df.shape[0], 5)
+        self.assertLess(df.shape[0], 15)
